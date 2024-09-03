@@ -1,7 +1,7 @@
 {
-	"name": "customize-toolbar",
-	"displayName": "Customize Toolbar",
-	"description": "Add custom buttons to the toolbar",
+	"name": "action-buttons-customizer",
+	"displayName": "Action buttons customizer",
+	"description": "Customize action buttons to execute custom commands or tasks",
 	"categories": [
 		"Other",
 		"Visualization",
@@ -19,11 +19,11 @@
 		"terminal",
 		"status"
 	],
-	"publisher": "liangruliu",
+	"publisher": "tur11ng",
 	"icon": "images/icon.png",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/LiangruLiu/VSCode-Extension/tree/customize-toolbar"
+		"url": "https://github.com/tur11ng/action-buttons-customizer"
 	},
 	"version": "0.2.0",
 	"engines": {
@@ -41,11 +41,11 @@
 	"contributes": {
 		"configuration": {
 			"type": "object",
-			"title": "Customize Toolbar",
+			"title": "Action buttons customizer",
 			"properties": {
 				"CustomizeToolbar.buttonConfig": {
 					"order": 1,
-					"markdownDescription": "Go to `settings.json` to configure the toolbar buttons. \n\n After the changes, you need to restart VSCode twice as prompted. \n\n If the actual display doesn't match the configuration file due to plugin update or other unknown reasons, you can execute `Customize Toolbar: Refresh` in the [command palette](command:workbench.action.showCommands) ( or simply click this button: [[REFRESH]](command:customize-toolbar.refresh) ).",
+					"markdownDescription": "Go to `settings.json` to configure the toolbar buttons. \n\n After the changes, you need to restart VSCode twice as prompted. \n\n If the actual display doesn't match the configuration file due to plugin update or other unknown reasons, you can execute `Action buttons customizer: Refresh` in the [command palette](command:workbench.action.showCommands) ( or simply click this button: [[REFRESH]](command:action-buttons-customizer.refresh) ).",
 					"type": "array",
 					"items": {
 						"type": "object",
@@ -63,7 +63,10 @@
 							},
 							"command_vscode": {
 								"markdownDescription": "**(Exclusive)** The VSCode command executed by pressing the button. \n\n Note that you need to fill in the **identifier** instead of the name. Specific information can be found in the [keyboard shortcut list](command:workbench.action.openGlobalKeybindings). \n\n For example, to expand or retract the terminal, write `workbench.action.terminal.toggleTerminal` instead of `view.toggleTerminal`.",
-								"type": "string"
+								"type": "array",
+								"items": {
+									"type": "string"
+								}
 							},
 							"command_terminal": {
 								"markdownDescription": "**(Exclusive)** The terminal command executed by pressing the button. \n\n Variables are substituted based on the context: \n\n + `$path` : full path of current file\n + `$dir` : path of the folder that current file is contained in\n + `$name` : current file's name\n + `$stem` : current file's name without extension\n + `$workspace` : path of the workspace (if exists)\n + `$relative` : path of current file relative to the workspace",
@@ -125,8 +128,8 @@
 						{
 							"name": "Cursor Align",
 							"icon": {
-								"light": "builtin/cursorAlign_dark.svg",
-								"dark": "builtin/cursorAlign_dark.svg"
+								"light": "builtin/cursor_align_light.svg",
+								"dark": "builtin/cursor_align_dark.svg"
 							},
 							"command_vscode": "yo1dog.cursor-align.alignCursors"
 						},
@@ -144,8 +147,8 @@
 		},
 		"commands": [
 			{
-				"command": "customize-toolbar.refresh",
-				"category": "Customize Toolbar",
+				"command": "action-buttons-customizer.refresh",
+				"category": "Action buttons customizer",
 				"title": "Refresh"
 			}
 		],
@@ -154,11 +157,5 @@
 			"editor/title": [],
 			"editor/title/run": []
 		}
-	},
-	"__metadata": {
-		"id": "b1e34ac6-c320-47fe-bb53-c02766c856e4",
-		"publisherDisplayName": "Liangru Liu",
-		"publisherId": "38d3078a-e2e3-4217-8e44-6a8b6cf6faaf",
-		"isPreReleaseVersion": false
 	}
 }
